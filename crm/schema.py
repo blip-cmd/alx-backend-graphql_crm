@@ -28,6 +28,11 @@ class OrderType(DjangoObjectType):
         fields = ("id", "customer", "products", "order_date", "total_amount")
 
 # Mutations
+class CustomerInput(graphene.InputObjectType):
+    name = graphene.String(required=True)
+    email = graphene.String(required=True)
+    phone = graphene.String()
+
 class CreateCustomer(graphene.Mutation):
     class Arguments:
         name = graphene.String(required=True)
@@ -52,7 +57,7 @@ class CreateCustomer(graphene.Mutation):
 
 class BulkCreateCustomers(graphene.Mutation):
     class Arguments:
-        input = graphene.List(graphene.JSONString, required=True)
+        input = graphene.List(CustomerInput, required=True)
 
     customers = graphene.List(CustomerType)
     errors = graphene.List(graphene.String)
@@ -62,9 +67,9 @@ class BulkCreateCustomers(graphene.Mutation):
         customers = []
         errors = []
         for idx, data in enumerate(input):
-            name = data.get('name')
-            email = data.get('email')
-            phone = data.get('phone')
+            name = data.name
+            email = data.email
+            phone = data.phone
             if not name or not email:
                 errors.append(f"Row {idx+1}: Name and email required")
                 continue
