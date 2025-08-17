@@ -1,3 +1,9 @@
+# ...existing code...
+
+# Empty Query class for schema integration
+import graphene
+class Query(graphene.ObjectType):
+    ping = graphene.String(default_value="pong")
 import graphene
 from graphene_django import DjangoObjectType
 from .models import Customer, Product, Order
