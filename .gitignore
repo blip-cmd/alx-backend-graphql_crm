@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so
@@ -29,6 +30,8 @@ ENV/
 env/
 .venv/
 .env/
+.venv.bak/
+env.bak/
 
 # PyInstaller
 *.manifest
@@ -69,11 +72,31 @@ dmypy.json
 
 # Node
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # dotenv
 *.env
 .env.*
+!.env.example
 
 # GraphQL
 *.graphqlrc*
 .graphqlconfig
+
+# Editor directories and files
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Coverage reports
+coverage/
+alx_backend_graphql_crm/__pycache__/settings.cpython-313.pyc
+alx_backend_graphql_crm/__pycache__/settings.cpython-313.pyc

@@ -1,9 +1,15 @@
 # ...existing code...
 
-# Empty Query class for schema integration
 import graphene
+from graphene_django import DjangoObjectType, DjangoFilterConnectionField
+from .models import Customer, Product, Order
+from .filters import CustomerFilter, ProductFilter, OrderFilter
+
 class Query(graphene.ObjectType):
     ping = graphene.String(default_value="pong")
+    all_customers = DjangoFilterConnectionField(lambda: CustomerType, filterset_class=CustomerFilter, order_by=graphene.List(graphene.String))
+    all_products = DjangoFilterConnectionField(lambda: ProductType, filterset_class=ProductFilter, order_by=graphene.List(graphene.String))
+    all_orders = DjangoFilterConnectionField(lambda: OrderType, filterset_class=OrderFilter, order_by=graphene.List(graphene.String))
 import graphene
 from graphene_django import DjangoObjectType
 from .models import Customer, Product, Order
