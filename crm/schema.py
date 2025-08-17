@@ -7,6 +7,7 @@ from .filters import CustomerFilter, ProductFilter, OrderFilter
 
 class Query(graphene.ObjectType):
     ping = graphene.String(default_value="pong")
+    hello = graphene.String(default_value="Hello, GraphQL!")
     all_customers = DjangoFilterConnectionField(lambda: CustomerType, filterset_class=CustomerFilter, order_by=graphene.List(graphene.String))
     all_products = DjangoFilterConnectionField(lambda: ProductType, filterset_class=ProductFilter, order_by=graphene.List(graphene.String))
     all_orders = DjangoFilterConnectionField(lambda: OrderType, filterset_class=OrderFilter, order_by=graphene.List(graphene.String))
