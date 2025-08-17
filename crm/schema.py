@@ -91,7 +91,7 @@ class BulkCreateCustomers(graphene.Mutation):
 class CreateProduct(graphene.Mutation):
     class Arguments:
         name = graphene.String(required=True)
-        price = graphene.Float(required=True)
+        price = graphene.Decimal(required=True)
         stock = graphene.Int()
 
     product = graphene.Field(ProductType)
