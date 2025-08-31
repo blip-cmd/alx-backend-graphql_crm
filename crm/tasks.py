@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+import requests
 from celery import shared_task
 from gql.transport.requests import RequestsHTTPTransport
 from gql import gql, Client
@@ -30,7 +31,7 @@ def generate_crm_report():
     for edge in result.get('allOrders', {}).get('edges', []):
         node = edge.get('node', {})
         revenue += float(node.get('totalAmount', 0))
-    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     log_line = f"{timestamp} - Report: {customers} customers, {orders} orders, {revenue} revenue\n"
     try:
         with open('/tmp/crm_report_log.txt', 'a') as f:
