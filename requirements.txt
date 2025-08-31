@@ -1,0 +1,5 @@
+django>=4.2.0
+graphene-django>=3.0.0
+django-filter>=23.0
+gql[all]>=3.4.0
+django-crontab>=0.7.1
