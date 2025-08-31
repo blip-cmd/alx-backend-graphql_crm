@@ -4,6 +4,7 @@ import graphene
 from graphene_django import DjangoObjectType, DjangoFilterConnectionField
 from .models import Customer, Product, Order
 from .filters import CustomerFilter, ProductFilter, OrderFilter
+from crm.models import Product
 
 class Query(graphene.ObjectType):
     ping = graphene.String(default_value="pong")
